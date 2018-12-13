@@ -1,32 +1,35 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      
   <ui:composition template="/WEB-INF/include/template.xhtml">
     <ui:define name="head">
-        <title>Hello JSF </title>
+        <title>SupHouseHold </title>
         <!-- Custom styles for this template -->
         
     </ui:define>
     <ui:define name="body">
         <div class="navbar">
             <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <div class="container col-lg-12">
+        <div class="navbar-header col-lg-11">
+          <button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand  " href="#">SupHouseHold</a>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+        <div id="navbar" class="collapse navbar-collapse col-lg-2">
+          <ul class="nav navbar-nav ">
+            <li ><a href="#" data-toggle="modal" data-target="#loginModal">Log in</a></li>
+            <li><a href="#contact" data-toggle="modal" data-target="#RegisterModal">Register</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -43,7 +46,53 @@
         </h:form>
         
         
-      </div>
+    </div>
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h:form>
+                        <b:row class="text-center">                                   
+                                <h:inputText  a:placeholder="email" class="form-control "  value="#{HelloBean.email}" style="width:40%; display:inline" />
+                                <h:inputText  a:placeholder="password" class="form-control " value="#{HelloBean.password}" style="width:40%; display:inline" />                              
+                        </b:row>
+                        <br/>
+                        <b:row class="text-center">
+                              <button type="button" class="btn btn-primary" data-dismiss="modal">Connection</button>
+                        </b:row>
+                    </h:form>
+                </div>
+              </div>
+            </div>
+    </div>
+    <div class="modal fade" id="RegisterModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h:form class="text-center">
+                        <b:row class="text-center">                                   
+                                <h:inputText  a:placeholder="Firstname" class="form-control "  value="#{UserBean.firstName}" style="width:40%; display:inline" />
+                                <h:inputText  a:placeholder="Lastname" class="form-control " value="#{UserBean.lastName}" style="width:40%; display:inline" />                              
+                        </b:row>
+                        <br/>
+                        <b:row class="text-center">                                   
+                                <h:inputText  a:placeholder="Username" class="form-control "  value="#{UserBean.userName}" style="width:40%; display:inline" />
+                                <h:inputText  a:placeholder="Postalcode" class="form-control " value="#{UserBean.postalCode}" style="width:40%; display:inline" />                              
+                        </b:row>
+                        <br/>
+                        <b:row class="text-center">                                   
+                                <h:inputText  a:placeholder="Email" class="form-control "  value="#{UserBean.email}" style="width:40%; display:inline" />
+                                <h:inputText  a:placeholder="Password" class="form-control " value="#{UserBean.password}" style="width:40%; display:inline" />                              
+                        </b:row>
+                        <br/>
+                        <b:row class="text-center">
+                              <button type="button" class="btn btn-primary" data-dismiss="modal">Register</button>
+                        </b:row>
+                    </h:form>
+                </div>
+              </div>
+            </div>
+    </div>
     </div><!-- /.container -->
     </ui:define>
   </ui:composition> 

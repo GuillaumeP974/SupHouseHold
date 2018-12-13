@@ -16,6 +16,8 @@ public class HelloBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String nom;
+    private String email;
+    private String password;
     
     public String getNom() {
         return nom;
@@ -23,5 +25,25 @@ public class HelloBean implements Serializable {
 
     public void setNom( String nom ) {
         this.nom = nom;
+    }
+    
+    public String getEmail()
+    {
+        return email;
+    }
+    
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+    
+    public String getPassword()
+    {
+        return password;
+    }
+    
+    public void setPaswword(String password)
+    {
+        this.password = password;
     }
 }

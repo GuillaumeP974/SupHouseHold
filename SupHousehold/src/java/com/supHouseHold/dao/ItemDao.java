@@ -32,6 +32,11 @@ public class ItemDao {
     return item;
     }
     
+    public List<Item> listAll(){
+        
+        return em.createQuery("SELECT i FROM Item i").getResultList();
+    }
+    
     //Criteria for bought items per user to code
      public List<Item> findUserItems(Item item){
         return null;

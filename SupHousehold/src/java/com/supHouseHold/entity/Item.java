@@ -16,7 +16,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
- * @author cgi
+ * @author Thibault
  */
 @Entity
 @ManagedBean

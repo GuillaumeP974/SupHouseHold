@@ -13,7 +13,7 @@ import javax.persistence.Id;
 
 /**
  *
- * @author cgi
+ * @author Thibault
  */
 @Entity
 @ManagedBean

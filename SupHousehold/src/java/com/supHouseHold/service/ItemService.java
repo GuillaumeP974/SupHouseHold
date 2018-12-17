@@ -18,6 +18,6 @@ public interface ItemService {
     
     public Item addItem(Item item);
     public List<Item> listAll();
-    public Item findUserItems(Item item);
+    public List<Item> findUserItems(Item item);
     
 }

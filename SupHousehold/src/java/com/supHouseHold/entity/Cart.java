@@ -9,16 +9,19 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  *
- * @author cgi
+ * @author Thibault
  */
 @Entity
 @ManagedBean
 @SessionScoped
 public class Cart {
     
+    @Id
+    private Long id;
     
     private List<Item> itemList;
     

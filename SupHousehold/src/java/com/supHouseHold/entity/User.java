@@ -45,7 +45,7 @@ public class User implements Serializable {
     @Email
     private String email;
     
-    @NotEmpty
+    
     private Long postalCode;
     
     @NotEmpty

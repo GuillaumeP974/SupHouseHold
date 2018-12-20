@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.supinfo.supHouseHold.service.impl;
+package com.supHouseHold.service.impl;
 
 import com.supHouseHold.dao.UserDao;
 import com.supHouseHold.entity.User;

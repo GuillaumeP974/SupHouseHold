@@ -5,10 +5,12 @@
  */
 package com.supHouseHold.entity;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  *
@@ -17,9 +19,11 @@ import javax.persistence.Entity;
 @Entity
 @ManagedBean
 @SessionScoped
-public class Cart {
+public class Cart implements Serializable {
     
-    
+    @Id
+    private Long id;
+        
     private List<Item> itemList;
     
     private User user;

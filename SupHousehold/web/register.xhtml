@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+                            <h:form class="text-center">
+                        <b:row class="text-center">                                   
+                            <h:inputText  a:placeholder="Firstname" class="form-control "  value="#{userController.user.firstName}" style="width:40%; display:inline" />
+                            <h:inputText  a:placeholder="Lastname" class="form-control " value="#{userController.user.lastName}" style="width:40%; display:inline" />                              
+                        </b:row>
+                        <br/>
+                        <b:row class="text-center">                                   
+                            <h:inputText  a:placeholder="Username" class="form-control "  value="#{userController.user.userName}" style="width:40%; display:inline" />
+                            <h:inputText  a:placeholder="Postalcode" class="form-control " value="#{userController.user.postalCode}" style="width:40%; display:inline" />                              
+                        </b:row>
+                        <br/>
+                        <b:row class="text-center">                                   
+                            <h:inputText  a:placeholder="Email" class="form-control "  value="#{userController.user.email}" style="width:40%; display:inline" />
+                            <h:inputText  a:placeholder="Password" class="form-control " value="#{userController.user.password}" style="width:40%; display:inline" />                              
+                        </b:row>
+                        <br/>
+                        <b:row class="text-center">
+                            <h:commandButton action="#{userController.addUser}" value="Register"/>
+                        </b:row>
+                    </h:form>
+    </h:body>
+</html

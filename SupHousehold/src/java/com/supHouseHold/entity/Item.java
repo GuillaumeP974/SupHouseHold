@@ -5,13 +5,14 @@
  */
 package com.supHouseHold.entity;
 
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotEmpty;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -20,7 +21,7 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 @ManagedBean
 @SessionScoped
-class Item { 
+public class Item implements Serializable { 
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

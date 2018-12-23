@@ -1,0 +1,308 @@
+?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+      
+  <ui:composition template="/WEB-INF/include/template.xhtml">
+    <ui:define name="head">
+        <title>SupHouseHold</title>
+        <!-- Custom styles for this template -->
+        <link href="shop-homepage.css" rel="stylesheet"/> 
+    </ui:define>
+      
+    <ui:define name="body">
+        <c:if test="Session != null">
+            <nav class="navbar navbar-inverse navbar-fixed-top" >
+              <div class="container col-lg-12">
+                <div class="navbar-header col-sm-10">
+                  <h:form>
+                  <a class="navbar-brand  " href="#">SupHouseHold</a>
+                  <div class="input-group">
+                        <h:inputText class="form-control" value="" style="margin-top: 8px;" a:placeholder="search"/>  <!-- Value = item name for search-->
+                  </div>
+                  </h:form>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse ">
+                  <ul class="nav navbar-nav ">
+                    <li ><a href="#" data-toggle="modal" data-target="#EditModal">Profil</a></li>
+                    <li ><a href="#" data-toggle="modal" data-target="#CartModal">Cart</a></li>
+                    <li><a href="#contact" data-toggle="modal" data-target="#RegisterModal" action="Home">Log out</a></li>
+                  </ul>
+                </div><!--/.nav-collapse -->
+              </div>
+            </nav>
+        </c:if>
+        <c:otherwise>
+            <div class="navbar">
+                <nav class="navbar navbar-inverse navbar-fixed-top">
+                    <div class="container col-lg-12">
+                      <div class="navbar-header col-lg-11">
+                        <button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                          <span class="sr-only">Toggle navigation</span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand  " href="#">SupHouseHold</a>
+                      </div>
+                      <div id="navbar" class="collapse navbar-collapse col-lg-2">
+                        <ul class="nav navbar-nav ">
+                          <li ><a href="#" data-toggle="modal" data-target="#loginModal">Log in</a></li>
+                          <li><a href="#contact" data-toggle="modal" data-target="#RegisterModal">Register</a></li>
+                        </ul>
+                      </div><!--/.nav-collapse -->
+                    </div>
+                </nav>
+            </div>
+        </c:otherwise>
+        
+        <div class="row col-lg-12">
+            <c:if test="Search != null"></c:if>
+                <c:forEach var="item" items="list item return by seach">
+                    <div class="col-lg-4 well">
+                        <div class="card " >
+                          <a href="#"><img class="card-img-top" style="width: 40em;" src="http://placehold.it/700x400" alt=""/></a>
+                          <div class="card-body">
+                            <h4 class="card-title">
+                              <a href="#">Item One</a><!--remplacer par #{item.name}-->
+                            </h4>
+                            <h5>$00</h5><!--remplacer par #{item.price}-->
+                            <p class="card-text">Description</p><!--remplacer par #{itemdescription}-->
+                          </div>
+                        </div>
+                    </div>
+                </c:forEach>
+            </c:if>
+            <c:otherwise>
+                <div class="col-lg-12 text-center">
+                    <h1>Sorry no items found.</h1>
+                </div>
+            </c:otherwise>
+            <div class="col-lg-4 well">
+
+            </div>
+        </div>
+        
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h:form>
+                        <b:row class="text-center">                                   
+                                <h:inputText  a:placeholder="email" class="form-control "  value="#{HelloBean.email}" style="width:40%; display:inline" />
+                                <h:inputText  a:placeholder="password" class="form-control " value="#{HelloBean.password}" style="width:40%; display:inline" />                              
+                        </b:row>
+                        <br/>
+                        <b:row class="text-center">
+                              <button type="button" class="btn btn-primary" data-dismiss="modal">Connection</button> <!-- appel fonction log in-->
+                        </b:row>
+                    </h:form>
+                </div>
+              </div>
+            </div>
+    </div>
+    <div class="modal fade" id="RegisterModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h:form class="text-center">
+                        <b:row class="text-center">                                   
+                                <h:inputText  a:placeholder="Firstname" class="form-control "  value="#{UserBean.firstName}" style="width:40%; display:inline" />
+                                <h:inputText  a:placeholder="Lastname" class="form-control " value="#{UserBean.lastName}" style="width:40%; display:inline" />                              
+                        </b:row>
+                        <br/>
+                        <b:row class="text-center">                                   
+                                <h:inputText  a:placeholder="Username" class="form-control "  value="#{UserBean.userName}" style="width:40%; display:inline" />
+                                <h:inputText  a:placeholder="Postalcode" class="form-control " value="#{UserBean.postalCode}" style="width:40%; display:inline" />                              
+                        </b:row>
+                        <br/>
+                        <b:row class="text-center">                                   
+                                <h:inputText  a:placeholder="Email" class="form-control "  value="#{UserBean.email}" style="width:40%; display:inline" />
+                                <h:inputText  a:placeholder="Password" class="form-control " value="#{UserBean.password}" style="width:40%; display:inline" />                              
+                        </b:row>
+                        <br/>
+                        <b:row class="text-center">
+                              <button type="button" class="btn btn-primary" data-dismiss="modal">Register</button> <!-- appel fonction Register-->
+                        </b:row>
+                    </h:form>
+                </div>
+              </div>
+            </div>
+    </div>
+    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2 class="modal-title" id="exampleModalLabel">Profil</h2>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <h:form>
+                        <b:row>
+                            <b:column medium-screen="6" class="text-center">
+                                <h3>Firstname:</h3>
+                            </b:column>
+                            <b:column medium-screen="6" class="text-center">
+                                <h:inputText  required="true"  value="#{user.firstName}" class="form-control "   style="width:80%; display:inline; margin-top:1em" /> <!-- Value = user.firstname-->
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column medium-screen="6" class="text-center">
+                                <h3>Lasstname:</h3>
+                            </b:column>
+                            <b:column medium-screen="6" class="text-center">
+                                <h:inputText  required="true"  value="#{user.lastName}" class="form-control "   style="width:80%; display:inline; margin-top:1em" /> <!-- Value = user.firstname-->
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column medium-screen="6" class="text-center">
+                                <h3>Email:</h3>
+                            </b:column>
+                            <b:column medium-screen="6" class="text-center">
+                                <h:inputText  required="true"  value="#{user.email}" class="form-control "   style="width:80%; display:inline; margin-top:1em" /> <!-- Value = user.firstname-->
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column medium-screen="6" class="text-center">
+                                <h3>Postal code:</h3>
+                            </b:column>
+                            <b:column medium-screen="6" class="text-center">
+                                <h:inputText  required="true"  value="#{user.postalCode}" class="form-control "   style="width:80%; display:inline; margin-top:1em" /> <!-- Value = user.firstname-->
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column medium-screen="6" class="text-center">
+                                <h3>Username:</h3>
+                            </b:column>
+                            <b:column medium-screen="6" class="text-center">
+                                <h:inputText  required="true"  value="#{user.userName}" class="form-control "   style="width:80%; display:inline; margin-top:1em" /> <!-- Value = user.firstname-->
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column medium-screen="6" class="text-center">
+                                <h3>Password:</h3>
+                            </b:column>
+                            <b:column medium-screen="6" class="text-center">
+                                <h:inputText  required="true"  value="#{user.password}" class="form-control "   style="width:80%; display:inline; margin-top:1em;" /> <!-- Value = user.firstname-->
+                            </b:column>                           
+                        </b:row>
+                        <b:row>
+                            <b:column medium-screen="6" class="text-center">
+                                <h3>Purchased items:</h3>
+                            </b:column>
+                            <b:column medium-screen="6" class="text-center">
+                                <h3>Purchased items List</h3>
+                            </b:column>
+                        </b:row>
+                    </h:form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button> <!-- appel fonction éditer profil-->
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="modal fade" id="CartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2 class="modal-title" id="exampleModalLabel">Cart</h2>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="modal-body" style=" padding-top: 0px;">
+                    <b:row style="border-bottom: solid 1px lightgrey;">
+                        <h3>Total item(s) in cart: (item count)</h3>
+                    </b:row>
+                </div>
+                <div class="modal-body" style=" padding-top: 0px;">
+                    <b:row style="border-bottom: solid 1px lightgrey;">
+                        <c:forEach var="item" items="#{Cart.itemList}">
+                            <b:row>
+                                <h3>#{item.name}:#{item.price}$</h3>
+                            </b:row>
+                        </c:forEach>
+                    </b:row>
+                </div>
+                  <div class="modal-body" style=" padding-top: 0px;">
+                      <h3>Total price = (total price items in cart)</h3>
+                  </div>
+                
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Buy item(s)</button> <!-- appel fonction acheter item-->
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="modal fade" id="ItemModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2 class="modal-title" id="exampleModalLabel">#{item.name}</h2>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                   <b:row style="border-bottom: solid 1px lightgrey;">
+                       <b:column medium-screen="3"></b:column>
+                        <b:column medium-screen="3" class="text-center">
+                                <h3>Id:</h3>
+                        </b:column>
+                        <b:column medium-screen="3" class="text-center">
+                                <h3>#{item.id}</h3>
+                        </b:column>
+                       <b:column medium-screen="3"></b:column>
+                    </b:row >
+                    <b:row style="border-bottom: solid 1px lightgrey;">
+                       <b:column medium-screen="3"></b:column>
+                        <b:column medium-screen="3" class="text-center">
+                                <h3>Code:</h3>
+                        </b:column>
+                        <b:column medium-screen="3" class="text-center">
+                                <h3>#{item.code}</h3>
+                        </b:column>
+                       <b:column medium-screen="3"></b:column>
+                    </b:row >
+                    <b:row style="border-bottom: solid 1px lightgrey;">
+                       <b:column medium-screen="3"></b:column>
+                        <b:column medium-screen="3" class="text-center">
+                                <h3>Price:</h3>
+                        </b:column>
+                        <b:column medium-screen="3" class="text-center">
+                                <h3>#{item.price}</h3>
+                        </b:column>
+                       <b:column medium-screen="3"></b:column>
+                    </b:row>
+                    <b:row>
+                       <b:column medium-screen="4"></b:column>
+                        <b:column medium-screen="4" class="text-center">
+                                <h3>#{item.description}</h3>
+                        </b:column>                       
+                       <b:column medium-screen="4"></b:column>
+                    </b:row>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Add to cart</button> <!-- appel fonction ajouter au panier -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+    </ui:define>
+  </ui:composition>
+
+

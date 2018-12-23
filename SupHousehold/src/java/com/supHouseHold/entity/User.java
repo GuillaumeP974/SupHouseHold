@@ -19,11 +19,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
- * @author cgi
+ * @author Romain
  */
-@Entity
+
 @ManagedBean
 @SessionScoped
+@Entity
 @Table(name="users")
 public class User implements Serializable {
 
@@ -34,22 +35,23 @@ public class User implements Serializable {
 
     @NotEmpty
     private String firstName;
-    
+
     @NotEmpty
     private String lastName;
-    
+
     @NotEmpty
-    private String userName;
-    
+    private String username;
+
     @NotEmpty
     @Email
     private String email;
+
     
-    @NotEmpty
     private Long postalCode;
-    
+
     @NotEmpty
     private String password;
+    
     private List<Item> purchasedItem;
 
     public Long getId() {
@@ -76,12 +78,12 @@ public class User implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String userName) {
+        this.username = userName;
     }
 
     public String getEmail() {
@@ -118,3 +120,4 @@ public class User implements Serializable {
     
     
 }
+

@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      
+  <ui:composition template="/WEB-INF/include/template.xhtml">
+    <ui:define name="head">
+        <title>SupHouseHold </title>
+        <!-- Custom styles for this template -->
+        
+    </ui:define>
+    <ui:define name="body">
+        <div class="navbar">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container col-lg-12">
+        <div class="navbar-header col-sm-11">
+          <h:form>
+          <a class="navbar-brand  " href="#">SupHouseHold</a>
+          <div class="input-group">
+                <h:inputText class="form-control" value="" style="margin-top: 8px;" a:placeholder="search"/>  <!-- Value = item name for search-->
+          </div>
+          </h:form>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse ">
+          <ul class="nav navbar-nav ">
+            <li ><a href="#" data-toggle="modal" data-target="#loginModal">Log in</a></li>
+            <li><a href="#contact" data-toggle="modal" data-target="#RegisterModal" action="Home">Register</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    </div>
+    <br/>    
+    
+    <div class="container">
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h:form id="login">
+                        <b:row>                            
+                            <b:row>
+                                <b:column medium-screen="3" class="text-center"></b:column>
+                                <b:column medium-screen="6" class="text-center">
+                                <b:inputText placeholder="Email" id="email" autocomplete="false">
+                                  <f:facet name="prepend">
+                                    <b:icon name="user" />
+                                  </f:facet>
+                                </b:inputText>
+                              </b:column>
+                              <b:column medium-screen="6" style-class="message">
+                                <b:message for="email" />
+                              </b:column>
+                            </b:row>
+                            <b:row tooltip="This password has fancy error messages.">
+                              <b:column medium-screen="3" class="text-center"></b:column>
+                              <b:column medium-screen="6" class="text-center">
+                                <b:inputSecret placeholder="Password" id="password" 
+                                               ajax="true" autocomplete="false" update="">
+                                  <f:facet name="prepend">
+                                    <b:iconAwesome name="key" />
+                                  </f:facet>
+                                </b:inputSecret>
+                              </b:column>
+                              <b:column medium-screen="6" styleClass="message">
+                                <b:message for="password" />
+                              </b:column>
+                            </b:row>                           
+                        </b:row>
+                        <br/>
+                        <b:row class="text-center">                             
+                            <h:commandButton class="btn btn-primary" action="Home" value="Connection"/>
+                        </b:row>
+                    </h:form>
+                </div>
+              </div>
+            </div>
+    </div>
+    <div class="modal fade" id="RegisterModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h:form class="text-center" id="register">
+                        <b:row class="text-center">                                   
+                                <h:inputText  required="true"  a:placeholder="Firstname" class="form-control "   style="width:40%; display:inline" /> <!-- Value = user.firstname-->
+                                <h:inputText required="true"  a:placeholder="Lastname" class="form-control "  style="width:40%; display:inline" /> <!-- Value = user.LastName-->                             
+                        </b:row>
+                        <br/>
+                        <b:row class="text-center">                                   
+                                <h:inputText  required="true" requiredMessage="Username is required" a:placeholder="Username" class="form-control "  value="" style="width:40%; display:inline" /><!-- Value = user.username-->
+                                <h:inputText  required="true"  a:placeholder="Postalcode" class="form-control "  style="width:40%; display:inline" />  <!-- Value = user.PostalCode-->                            
+                        </b:row>
+                        <br/>
+                        <b:row class="text-center">                                   
+                                <h:inputText required="true" a:placeholder="Email" class="form-control "   style="width:40%; display:inline" /><!-- Value = user.Email-->
+                                <h:inputSecret  required="true"  a:placeholder="Password" class="form-control "  style="width:40%; display:inline" />   <!-- Value = user.Password-->                           
+                        </b:row>
+                        <br/>
+                        <b:row class="text-center">
+                            <h:commandButton value="Register" action="Home" class="btn btn-primary"/>                                                             
+                        </b:row>
+                    </h:form>
+                </div>
+              </div>
+            </div>
+    </div>
+        <div class=" col-lg-12 text-center">
+            <row class="text-center">
+                <h1 style="font-size: 6em;"><font face="Bazooka">Welcome to SupHouseHold!</font></h1>
+            </row>
+            <br/>
+            <row  id="About us">
+                <div class="col-lg-6 text-center well" >
+                    <row>
+                        <h3><ins>About us</ins></h3>
+                    </row>
+                    <row>
+                        <p>We are a new copany in the house hold market.</p>
+                        <p>Created by 4 students who shared the same goal,</p>
+                        <h2><font face="Bazooka">give new life to used appliances!</font></h2>
+                        <br/>
+                        <p>We offer a wide range of devices, selected and reconditioned by us.</p>
+                        <p>Register now to have acces to our catalog!</p>
+                    </row>
+                </div>
+                <div class="col-lg-6 text-center well" style="max-height: 289px;">
+                    <row class="col-lg-12">
+                        <h3><ins>Informations</ins></h3>
+                    </row>
+                    <row class="col-lg-12">
+                        <div >
+                            <button  type="button" title="Number of users" class="btn btn-info" style="width: 45%; height:7em; display:inline">
+                                <span class="glyphicon glyphicon-user" style="font-size: 4em;"></span><p style="font-size:5em; display:inline "> </p><!-- Value User count -->
+                            </button>   
+                            <button  type="button" title="Number of items" class="btn btn-info" style="width: 45%; height:7em; display:inline">
+                                <span class="glyphicon glyphicon-list" style="font-size: 4em;"></span><p style="font-size:5em; display:inline "> </p><!-- Value items count -->
+                            </button>   
+                        </div>
+                        <div></div>
+                    </row>
+                    
+                    <row class="col-lg-12" style="margin-top: 3px;">
+                        <div >
+                            <button  type="button" title="Number of wharehouse" class="btn btn-info" style="width: 45%; height:7em; display:inline">
+                                <span class="glyphicon glyphicon-home" style="font-size: 4em;"></span><p style="font-size:5em; display:inline "> 1</p>
+                            </button>   
+                            <button title="Number of sales"  type="button" class="text-left btn btn-info " style="width: 45%; height:7em; display:inline">
+                                <span class="glyphicon glyphicon-ok" style="font-size: 4em;"></span> <p style="font-size:5em; display:inline "> </p><!-- Value sales count -->
+                            </button>      
+                        </div>
+                        <div></div>
+                    </row>
+                </div>
+            </row>
+        </div>
+        
+    </div><!-- /.container -->
+    </ui:define>
+  </ui:composition> 
+</html>
+

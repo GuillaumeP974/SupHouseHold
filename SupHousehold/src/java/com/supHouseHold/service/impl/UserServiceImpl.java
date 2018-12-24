@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.supHouseHold.service.impl;
+package service.impl;
 
-import com.supHouseHold.entity.User;
 import dao.UserDao;
+import entity.User;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import com.supHouseHold.service.UserService;
+import service.UserService;
 
 /**
  *
@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
 
     @EJB
     private UserDao userDao;
-    
+
     @Override
     public User addUser(User user) {
         return userDao.addUser(user);
@@ -30,5 +30,10 @@ public class UserServiceImpl implements UserService {
     public User findUser(String username, String password) {
         return userDao.findUser(username, password);
     }
-    
+
+    @Override
+    public User editUser(User editUser) {
+        return userDao.editUser(editUser);
+    }
+
 }

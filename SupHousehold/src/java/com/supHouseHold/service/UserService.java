@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.supHouseHold.service;
+package service;
 
-import com.supHouseHold.entity.User;
+import entity.User;
 import javax.ejb.Remote;
 
 /**
@@ -14,9 +14,11 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface UserService {
-    
+
     public User addUser(User user);
-    
+
     public User findUser(String username, String password);
-    
+
+    public User editUser(User editUser);
+
 }

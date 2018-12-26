@@ -14,13 +14,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
-
-/**
- *
- * @author Romain
- */
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @ManagedBean
 @SessionScoped
@@ -33,26 +29,26 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotEmpty
+    @NotEmpty(message="First name must not be empty")
     private String firstName;
 
-    @NotEmpty
+    @NotEmpty(message="Last name must not be empty")
     private String lastName;
 
-    @NotEmpty
+    @NotEmpty(message="Username must not be empty")
     private String username;
 
-    @NotEmpty
+    @NotEmpty(message="Email must not be empty")
     @Email
     private String email;
 
-    
+    @NotNull(message="Postal Code must not be empty")
     private Long postalCode;
 
-    @NotEmpty
+    @NotEmpty(message="Password must not be empty")
     private String password;
-    
-    private List<Item> purchasedItem;
+
+//    private List<Item> purchasedItem;
 
     public Long getId() {
         return id;
@@ -110,14 +106,14 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public List<Item> getPurchasedItem() {
-        return purchasedItem;
-    }
+//    public List<Item> getPurchasedItem() {
+//        return purchasedItem;
+//    }
+//
+//    public void setPurchasedItem(List<Item> purchasedItem) {
+//        this.purchasedItem = purchasedItem;
+//    }
 
-    public void setPurchasedItem(List<Item> purchasedItem) {
-        this.purchasedItem = purchasedItem;
-    }  
-    
-    
+
 }
 

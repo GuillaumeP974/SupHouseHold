@@ -11,10 +11,6 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author cgi
- */
 @WebFilter(urlPatterns="/faces/connect/*")
 public class AuthenticationFilter implements Filter {
 
@@ -23,7 +19,14 @@ public class AuthenticationFilter implements Filter {
         // Do nothing
     }
 
-
+    /**
+     * Verifie si l'utilisateur est connecté, si non, l'utilisateur est invité à se connecter.
+     * @param request
+     * @param response
+     * @param chain
+     * @throws IOException
+     * @throws ServletException
+     */
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
@@ -33,7 +36,7 @@ public class AuthenticationFilter implements Filter {
 
 
         if (user == null) {
-            httpResponse.sendRedirect(request.getServletContext().getContextPath() + "/faces/login.xhtml");
+            httpResponse.sendRedirect(request.getServletContext().getContextPath() + "/faces/erreur.xhtml");
         } else {
             chain.doFilter(request, response);
         }

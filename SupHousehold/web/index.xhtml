@@ -3,98 +3,99 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-      
-  <ui:composition template="/WEB-INF/include/template.xhtml">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<ui:composition template="/WEB-INF/include/template.xhtml">
     <ui:define name="head">
         <title>SupHouseHold</title>
         <!-- Custom styles for this template -->
-        
+
     </ui:define>
     <ui:define name="body">
         <div class="navbar">
             <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container col-lg-12">
-        <div class="navbar-header col-lg-11">
-          <button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand  " href="#">SupHouseHold</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse col-lg-2">
-          <ul class="nav navbar-nav ">
-            <li ><a href="#" data-toggle="modal" data-target="#loginModal">Log in</a></li>
-            <li><a href="#contact" data-toggle="modal" data-target="#RegisterModal">Register</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-        </div>
-    
-    <div class="container">
-      <div class="starter-template text-center">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br/> All you get is this text and a mostly barebones HTML document.</p>
-        <h:form>
-            <h:inputText value="#{HelloBean.nom}" />
-            <h:commandButton class="btn btn-primary" value="Souhaiter la bienvenue" action="Welcome" />
-        </h:form>
-        
-        
-    </div>
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-body text-center">
-                    <h:form>
-                        <b:row class="text-center">                                   
-                                <h:inputText  a:placeholder="email" class="form-control "  value="#{HelloBean.email}" style="width:40%; display:inline" />
-                                <h:inputText  a:placeholder="password" class="form-control " value="#{HelloBean.password}" style="width:40%; display:inline" />                              
-                        </b:row>
-                        <br/>
-                        <b:row class="text-center">
-                              <button type="button" class="btn btn-primary" data-dismiss="modal">Connection</button>
-                        </b:row>
-                    </h:form>
+                <div class="container col-lg-12">
+                    <div class="navbar-header col-lg-11">
+                        <button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand  " href="#">SupHouseHold</a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse col-lg-2">
+                        <ul class="nav navbar-nav ">
+                            <c:choose>
+                                <c:when test='#{empty user.username}'>
+                                    <li ><a href="#" data-toggle="modal" data-target="#loginModal">Log in</a></li>
+                                    <li><a href="#contact" data-toggle="modal" data-target="#RegisterModal">Register</a></li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li><h:form><h:commandButton class="btn btn-secondary" action="#{userController.logout}" value="Log out" style="margin-top: 0.5em;"/></h:form></li> <!-- appel fonction log out-->
+                                </c:otherwise>
+                            </c:choose>
+                        </ul>
+                    </div><!--/.nav-collapse -->
                 </div>
-              </div>
-            </div>
-    </div>
-    <div class="modal fade" id="RegisterModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-body text-center">
-                    <h:form class="text-center">
-                        <b:row class="text-center">                                   
-                                <h:inputText  a:placeholder="Firstname" class="form-control "  value="#{UserBean.firstName}" style="width:40%; display:inline" />
-                                <h:inputText  a:placeholder="Lastname" class="form-control " value="#{UserBean.lastName}" style="width:40%; display:inline" />                              
-                        </b:row>
-                        <br/>
-                        <b:row class="text-center">                                   
-                                <h:inputText  a:placeholder="Username" class="form-control "  value="#{UserBean.userName}" style="width:40%; display:inline" />
-                                <h:inputText  a:placeholder="Postalcode" class="form-control " value="#{UserBean.postalCode}" style="width:40%; display:inline" />                              
-                        </b:row>
-                        <br/>
-                        <b:row class="text-center">                                   
-                                <h:inputText  a:placeholder="Email" class="form-control "  value="#{UserBean.email}" style="width:40%; display:inline" />
-                                <h:inputText  a:placeholder="Password" class="form-control " value="#{UserBean.password}" style="width:40%; display:inline" />                              
-                        </b:row>
-                        <br/>
-                        <b:row class="text-center">
-                              <button type="button" class="btn btn-primary" data-dismiss="modal">Register</button>
-                        </b:row>
-                    </h:form>
-                </div>
-              </div>
-            </div>
-    </div>
-    </div><!-- /.container -->
-    </ui:define>
-  </ui:composition> 
-</html>
+            </nav>
+        </div>
 
+        <div class="container">
+            <h:panelGroup rendered="#{not empty facesContext.messageList}">
+                <b:alert><h:messages></h:messages></b:alert>
+            </h:panelGroup>
+
+        </div>
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <h:form>
+                            <b:row class="text-center">
+                                <h:inputText  a:placeholder="email" class="form-control "  value="#{userController.username}" style="width:40%; display:inline" />
+                                <h:inputText  a:placeholder="password" class="form-control " value="#{userController.password}" style="width:40%; display:inline" />
+                            </b:row>
+                            <br/>
+                            <b:row class="text-center">
+                                <h:commandButton value="Connect" action="#{userController.login}" />
+                            </b:row>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="RegisterModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <h:form class="text-center">
+                            <b:row class="text-center">
+                                <h:inputText  a:placeholder="Firstname" class="form-control "  value="#{userController.user.firstName}" style="width:40%; display:inline" />
+                                <h:inputText  a:placeholder="Lastname" class="form-control " value="#{userController.user.lastName}" style="width:40%; display:inline" />
+                            </b:row>
+                            <br/>
+                            <b:row class="text-center">
+                                <h:inputText  a:placeholder="Username" class="form-control "  value="#{userController.user.username}" style="width:40%; display:inline" />
+                                <h:inputText  a:placeholder="Postalcode" class="form-control " value="#{userController.user.postalCode}" style="width:40%; display:inline" />
+                            </b:row>
+                            <br/>
+                            <b:row class="text-center">
+                                <h:inputText  a:placeholder="Email" class="form-control "  value="#{userController.user.email}" style="width:40%; display:inline" />
+                                <h:inputText  a:placeholder="Password" class="form-control " value="#{userController.user.password}" style="width:40%; display:inline" />
+                            </b:row>
+                            <br/>
+                            <b:row class="text-center">
+                                <h:commandButton action="#{userController.addUser}" value="Register"/>
+
+                            </b:row>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

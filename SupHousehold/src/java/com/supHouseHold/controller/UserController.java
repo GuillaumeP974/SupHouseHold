@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package com.supHouseHold.controller;
 
 import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
-import entity.User;
+import com.supHouseHold.entity.User;
 import java.io.IOException;
 import java.io.Serializable;
 import javax.ejb.EJB;
@@ -15,11 +15,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
-import service.UserService;
+import com.supHouseHold.service.UserService;
 
 /**
+ * User managed Bean
  *
- * @author Romain
  */
 @ManagedBean
 @SessionScoped
@@ -59,11 +59,23 @@ public class UserController implements Serializable {
         this.user = user;
     }
 
-    public String addUser() {
+    /**
+     * Function qui ajoute un utilisateur à lq base de données puis redirige vers l'espace personel de l'utilisateur.
+     * @return String
+     * @throws IOException
+     */
+    public String addUser() throws IOException {
         userService.addUser(user);
-        return "ok";
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.getExternalContext().getSessionMap().put("user", user);
+        context.getExternalContext().redirect("connect/home.xhtml");
+        return "add";
     }
 
+    /**
+     * Function qui permet à un utilisateur de se connecter puis redirige vers son espace personel.
+     * @throws IOException
+     */
     public void login() throws IOException{
 
         user = userService.findUser(username, password);
@@ -79,12 +91,19 @@ public class UserController implements Serializable {
         }
     }
 
+    /**
+     * Function qui permet de se déconnecter.
+     * @throws IOException
+     */
     public void logout() throws IOException {
         FacesContext context = FacesContext.getCurrentInstance();
         context.getExternalContext().invalidateSession();
-        context.getExternalContext().redirect("login.xhtml");
+        context.getExternalContext().redirect("index.xhtml");
     }
 
+    /**
+     * Function qui permet de modifier le profil utilisateur.
+     */
     public void editUser() {
         userService.editUser(user);
     }

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package com.supHouseHold.dao;
 
-import entity.User;
+import com.supHouseHold.entity.User;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -18,10 +18,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-/**
- *
- * @author Romain
- */
 @Stateless
 public class UserDao {
 
@@ -29,11 +25,22 @@ public class UserDao {
     @PersistenceContext
     private EntityManager em;
 
+    /**
+     * Persist un User gràçe à l'entity manager.
+     * @param user
+     * @return User
+     */
     public User addUser(User user){
         em.persist(user);
         return user;
     }
 
+    /**
+     * Recherche un User avec son username et son password. S'il concorde le renvoie sinon renvoie null.
+     * @param username
+     * @param password
+     * @return User
+     */
     public User findUser(String username, String password){
 
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
@@ -68,6 +75,11 @@ public class UserDao {
         return result;
     }
 
+    /**
+     * Modifie l'utilisateur en table.
+     * @param user
+     * @return User
+     */
     public User editUser(User user) {
         em.merge(user);
         return user;

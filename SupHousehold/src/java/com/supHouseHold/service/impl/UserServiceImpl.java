@@ -3,18 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package service.impl;
+package com.supHouseHold.service.impl;
 
-import dao.UserDao;
-import entity.User;
+import com.supHouseHold.dao.UserDao;
+import com.supHouseHold.entity.User;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import service.UserService;
+import com.supHouseHold.service.UserService;
 
-/**
- *
- * @author Romain
- */
 @Stateless
 public class UserServiceImpl implements UserService {
 
